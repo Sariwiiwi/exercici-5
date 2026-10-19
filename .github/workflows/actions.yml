@@ -23,7 +23,7 @@ jobs:
   test-linux:
     runs-on: ubuntu-latest
    
-     steps:
+    steps:
       - name: Configurar entorn de python
         uses: actions/checkout@v6
 
