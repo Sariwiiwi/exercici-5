@@ -1,43 +1,52 @@
 name: Executar els tests
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   test-win:
     runs-on: windows-latest
+    
     steps:
       - name: Configurar entorn de python
-      - uses: actions/checkout@v6
+        uses: actions/checkout@v6
+        
+      - name: Configurar entorn II python
         uses: actions/setup-python@v6
-
-      - name: Executar test unitari
-      - run: python -m unittest -v
         with:
           python-version: '3.12'
 
+      - name: Executar test unitari
+        run: python -m unittest -v
+  
   test-linux:
     runs-on: ubuntu-latest
-    steps:
+   
+     steps:
       - name: Configurar entorn de python
-      - uses: actions/checkout@v6
-        uses: actions/setup-python@v6
+        uses: actions/checkout@v6
 
-      - name: Executar test unitari
-      - run: python -m unittest -v
+      - name: Configurar entorn II de python
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
+
+      - name: Executar test unitari
+        run: python -m unittest -v
   test-mac:
     runs-on: macos-latest
     steps:
       - name: Configurar entorn de python
-      - uses: actions/checkout@v6
+        uses: actions/checkout@v6
+       
+      - name: Configurar entorn II de python
         uses: actions/setup-python@v6
+        with:
+          python-version: '3.13' 
 
       - name: Executar test unitari
-      - run: python -m unittest -v
-        with:
-          python-version: '3.13'
+        run: python -m unittest -v
 
 
 
